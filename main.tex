@@ -1,0 +1,107 @@
+\documentclass[tombo,b5paper]{ltjsarticle}
+\usepackage{bxpapersize}
+\usepackage[luatex]{xcolor}
+\usepackage[nosetpagesize, luatex]{graphicx}
+\usepackage{pdfpages}
+\usepackage{amsmath, amssymb}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{.85\textwidth}
+\usepackage{luatexja-otf}
+\usepackage{luatexja-fontspec}
+
+\usepackage{url}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage[pdfencoding=auto,luatex]{hyperref}
+\hypersetup{
+  bookmarksnumbered=true,
+  colorlinks=true,
+  pdftitle={this is lualatex-ja testpdf},
+  pdfauthor={hogehoge},
+  pdfsubject={subtitle here}
+}
+\definecolor{myblue}{HTML}{268BD2}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newtcolorbox{tips}[1]{
+  breakable,
+  before skip=10pt plus 5pt minus 5pt,
+  after skip=10pt plus 5pt minus 5pt,
+  boxrule=0.3pt,
+  colframe=myblue,
+  colback=white!95,
+  sharp corners=northwest,
+  fonttitle=\gtfamily\bfseries,
+  title=#1
+}
+\usepackage[colorinlistoftodos,prependcaption, textsize=tiny]{todonotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{./library.bib}
+
+% 単純にIPAexとかで良いなら、luatexja-presetを使うとよろしい
+% \usepackage[ipa]{luatexja-preset}
+
+% フォントは完全にテキトーに設定しているので、各位設定よろしく。
+\setmainfont[Ligatures=TeX]{Source Serif Pro}
+\setsansfont[Ligatures=TeX]{Source Sans Pro}
+
+\setmainjfont[BoldFont=Source Han Sans Bold]{Source Han Sans ExtraLight}
+\setsansjfont{Source Han Sans ExtraLight}
+
+\newjfontfamily\jisninety[CJKShape=JIS1990]{Source Han Sans ExtraLight}
+
+% わざとcolor周りは設定していない。自力でよろしく(solarizedとか良いよ)
+\lstset{
+  sensitive=true,
+	breaklines=true,
+	breakatwhitespace=true,
+	framerule=0pt,
+	frame=l
+	showstringspaces=false,
+	tabsize=2,
+}
+
+\author{@rizaudo}
+\date{\today}
+\title{同人誌の簡単テンプレート}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\begin{center}
+\begin{minipage}{0.85\hsize}
+  \begin{large}
+    \textit{ここにサークルとかの文句を入れておくと良し}
+    \begin{flushright}
+      \textit{書いたやつの名前}
+    \end{flushright}
+  \end{large}
+\end{minipage}
+\end{center}
+\vspace*{\stretch{1}}
+
+\cleardoublepage
+
+
+\section{はじめに}
+…………ブウウ――――――ンンン――――――ンンンン………………。
+　私がウスウスと眼を覚ました時、こうした蜜蜂の唸るような音は、まだ、その弾力の深い余韻を、私の耳の穴の中にハッキリと引き残していた。
+　それをジッと聞いているうちに……今は真夜中だな……と直覚した。そうしてどこか近くでボンボン時計が鳴っているんだな……と思い思い、又もウトウトしているうちに、その蜜蜂のうなりのような余韻は、いつとなく次々に消え薄れて行って、そこいら中がヒッソリと静まり返ってしまった。
+　私はフッと眼を開いた。
+
+\subfile{sections/sample1}
+\subfile{sections/sample2}
+
+
+\section{おわりに}
+ここに何か文を書く。
+\begin{tips}{これがtips用のボックスです}
+内容
+\end{tips}
+\todo[linecolor=red]{まだこの本は出来上がっていない。}
+BibTeXを使ったciteもこのように\cite{Vinyals2015}出来る。
+\listoftodos[TODOの一覧が出せるぞ]
+\printbibliography[segment=\therefsegment, title=参考文献]
+\end{document}
