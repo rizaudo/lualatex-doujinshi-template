@@ -1,0 +1,10 @@
+/*.el
+*.xml
+*.aux
+*.bbl
+*.tdo
+*.gz
+*.el
+*.fls
+*.log
+*.fdb_latexmk
